@@ -1,5 +1,6 @@
 package id.co.mii.serverapp.Service;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -19,6 +20,7 @@ public class CountryService {
     private CountryRepository countryRepository;
     private RegionRepository regionRepository;
     private RegionService regionService;
+    private ModelMapper modelMapper;
 
     public List<Country> getAll() {
         return countryRepository.findAll();
@@ -56,13 +58,31 @@ public class CountryService {
             throw new ResponseStatusException(HttpStatus.CONFLICT,
                     "Name is already exists!!! - Region");
         }
-
+        
         Country country = new Country();
         country.setCode(countryRequest.getCode());
         country.setName(countryRequest.getName());
-
+        
         Region region = regionService.getById(countryRequest.getRegionId());
         country.setRegion(region);
+        return countryRepository.save(country);
+    }
+    
+    // with DTO model mapper
+    public Country createDTOModelMapper(CountryRequest countryRequest){
+        
+        if (countryRepository.existsByName(countryRequest.getName())) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    "Name is already exists!!! - Country");
+        }
+    
+        if (regionRepository.findByName(countryRequest.getName()).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,
+                    "Name is already exists!!! - Region");
+        }
+
+        Country country = modelMapper.map(countryRequest, Country.class);
+        country.setRegion(regionService.getById(countryRequest.getRegionId()));
         return countryRepository.save(country);
     }
 
@@ -78,5 +98,5 @@ public class CountryService {
         return country;
     }
 
-    
+
 }
