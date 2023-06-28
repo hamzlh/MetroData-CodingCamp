@@ -38,6 +38,12 @@ public class RegionService {
     return region;
   }
 
+  public Region delete(Integer id){
+    Region region = getById(id);
+    regionRepository.delete(region);
+    return region;
+  }
+  
   // JPQL
   public List<Region> findAllName(String name) {
     return regionRepository.findAllName(name);
