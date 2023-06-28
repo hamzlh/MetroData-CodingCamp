@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import id.co.mii.serverapp.Model.Country;
+import id.co.mii.serverapp.Model.DTORequest.CountryRequest;
 import id.co.mii.serverapp.Service.CountryService;
 import lombok.AllArgsConstructor;
 
@@ -35,6 +36,18 @@ public class CountryController {
     @PostMapping
     public Country create(@RequestBody Country country){
         return countryService.create(country);
+    }
+
+    // with DTO
+    @PostMapping("/dto")
+    public Country createDTO(@RequestBody CountryRequest countryRequest){
+        return countryService.createDTO(countryRequest);
+    }
+
+    // with DTO model mapper
+    @PostMapping("/dto-mm")
+    public Country createDTOModelMapper(@RequestBody CountryRequest countryRequest){
+        return countryService.createDTOModelMapper(countryRequest);
     }
 
     @PutMapping("/{id}")
