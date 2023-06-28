@@ -17,7 +17,7 @@ import lombok.AllArgsConstructor;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping
+@RequestMapping("/country")
 public class CountryController {
     
     private CountryService countryService;
