@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import id.co.mii.serverapp.Model.Employee;
+import id.co.mii.serverapp.Model.DTORequest.EmployeeRequest;
 import id.co.mii.serverapp.Repositories.EmployeeRepository;
 import lombok.AllArgsConstructor;
 
@@ -15,6 +16,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class EmployeeService {
     private EmployeeRepository employeeRepository;
+    private ModelMapper modelMapper;
+    private UserService userService;
     
 
     public List<Employee> getAll(){
@@ -27,10 +30,15 @@ public class EmployeeService {
         "Employee not found!!!"));
     }
 
-    public Employee create(Employee employee){
-        if (employeeRepository.findByEmail(employee.getEmail()).isPresent()) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Email already exists!!!");
+    public Employee create(EmployeeRequest employeerRequest){
+        // if (employeeRepository.findByEmail(employee.getEmail()).isPresent()) {
+        //     throw new ResponseStatusException(HttpStatus.CONFLICT, "Email already exists!!!");
+        // }
+        if (employeeRepository.existsByEmail(employeerRequest.getEmail())) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Username already exists!!!" );
         }
+        Employee employee = modelMapper.map(employeerRequest, Employee.class);
+        employee.setUser(userService.getById(employeerRequest.getUserId()));
         return employeeRepository.save(employee);
     }
 

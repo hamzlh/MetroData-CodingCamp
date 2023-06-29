@@ -2,6 +2,7 @@ package id.co.mii.serverapp.Model;
 
 
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -37,14 +38,17 @@ public class User{
     @Column(name = "user_password", nullable = false )
     private String password;
 
-    @OneToOne
-    @JoinColumn(name = "employee_id")
+    // @OneToOne
+    // @JoinColumn(name = "employee_id")
+    // private Employee employee;
+
+    @OneToOne(mappedBy = "user")
     private Employee employee;
 
     @ManyToMany
-    @JoinTable(name = "role_user",
-        joinColumns = @JoinColumn(name = "role_id"),
-        inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @JoinTable(name = "user_role",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> role;
 
 }

@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+// import java.util.List;
 // import org.hibernate.mapping.Set;
 import java.util.Set;
 import lombok.AllArgsConstructor;
@@ -26,11 +29,13 @@ public class Role {
     @Column(name = "role_id")
     private Integer id;
 
-    @Column(name = "role_name")
+    @Column(name = "role_name", nullable = false, length = 50)
     private String name;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "role")
-    private Set<User> user; 
+    // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Set<User> users;
 
 
 }

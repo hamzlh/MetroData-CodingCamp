@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -34,8 +35,11 @@ public class Employee {
     @Column(name = "employe_phone", nullable = false, unique = true)
     private Integer phone;
 
-    @OneToOne(mappedBy = "employee")
+    // @OneToOne(mappedBy = "employee")
+    // private User user;
+    
+    @OneToOne
+    @JoinColumn(name = "user_id")
     private User user;
-
 
 }

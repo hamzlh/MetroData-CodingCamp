@@ -11,5 +11,6 @@ public class EmployeeRequest {
     private String email;
     private String name;
     private String phone;
-    
+    private Integer userId;
+
 }
