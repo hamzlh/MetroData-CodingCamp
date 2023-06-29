@@ -10,7 +10,11 @@ import lombok.NoArgsConstructor;
 public class EmployeeRequest {
     private String email;
     private String name;
-    private String phone;
-    private Integer userId;
+    private Integer phone;
+    // private Integer userId;
+    private String username;
+    private String password;
+    // private String roleName;
+    
 
 }

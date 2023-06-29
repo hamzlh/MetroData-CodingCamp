@@ -7,10 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRequest {
-    private String username;
-    private String password;
-    // private String roleName;
-    // private Integer employeeId;
-    
+public class RoleRequest {
+    private String name;
 }
