@@ -8,22 +8,17 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 import lombok.AllArgsConstructor;
-// import lombok.Data;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import lombok.Setter;
-import lombok.Getter;
-
-@Getter
-@Setter
+@Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,25 +27,20 @@ public class Employee {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "employee_id")
     private Integer id;
 
-    @Column(name = "employee_name", nullable = false, length = 50)
+    @Column(nullable = false, length = 50)
     private String name;
 
-    @Column(name = "employee_email", nullable = false, unique = true, length = 50)
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(name = "employe_phone", nullable = false, unique = true)
-    private Integer phone;
+    @Column(length = 13)
+    private String phone;
 
     
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
- 
-    @JsonIgnoreProperties("employee")
-
- 
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
     private User user;
 
 }

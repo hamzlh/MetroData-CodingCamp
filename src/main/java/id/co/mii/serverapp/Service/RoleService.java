@@ -26,17 +26,13 @@ public class RoleService {
     }
 
     public Role create (Role role){
-        
-        // if (roleRepository.findByName(role.getName()).equals(role)) {
-        //     throw new ResponseStatusException(HttpStatus.CONFLICT, "Role already exists!!!");        
-        // }
         return roleRepository.save(role);
     }
 
     public Role update (Integer Id, Role role){
         getById(Id);
         role.setId(Id);
-        return role;
+        return roleRepository.save(role);
     }
 
     public Role delete(Integer id){

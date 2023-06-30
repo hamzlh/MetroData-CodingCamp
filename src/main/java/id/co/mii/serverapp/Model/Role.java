@@ -11,16 +11,14 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Set;
+import java.util.List;
 import lombok.AllArgsConstructor;
-
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import lombok.Setter;
-import lombok.Getter;
 
-@Getter
-@Setter
+
+@Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,16 +27,13 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "role_id")
     private Integer id;
 
-    @Column(name = "role_name", nullable = false, length = 50)
+    @Column(nullable = false, length = 25)
     private String name;
 
-    @ManyToMany(mappedBy = "role")
-
+    @ManyToMany(mappedBy = "roles")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-
-    private Set<User> user;
+    private List<User> user;
 
 }

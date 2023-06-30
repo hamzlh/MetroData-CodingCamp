@@ -14,11 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 import id.co.mii.serverapp.Model.Role;
 import id.co.mii.serverapp.Service.RoleService;
 import lombok.AllArgsConstructor;
-// import lombok.NoArgsConstructor;
+
 
 @RestController
 @AllArgsConstructor
-// @NoArgsConstructor
 @RequestMapping("/role")
 public class RoleController {
     private RoleService roleService;
