@@ -1,12 +1,10 @@
 package id.co.mii.serverapp.Service;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
+
 import java.util.Set;
 
-// import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -64,6 +62,6 @@ public class UserService {
         }
         user.setRole(roles);
         return userRepository.save(user);
-    
+
     }
 }

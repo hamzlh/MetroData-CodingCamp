@@ -19,8 +19,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 // import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-// import com.fasterxml.jackson.annotation.JsonProperty;
+// import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 // import lombok.Data;
@@ -49,13 +49,14 @@ public class User{
     private String password;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Employee employee;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), 
     inverseJoinColumns = @JoinColumn(name = "role_id"))
-    @JsonIgnoreProperties("user")
+    // @JsonProperty(access = JsonProperty.Access.READ_WRITE)
+    // @JsonIgnoreProperties("user")
     private Set<Role> role;
 
 }
