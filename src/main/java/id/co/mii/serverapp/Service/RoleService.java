@@ -26,6 +26,7 @@ public class RoleService {
     }
 
     public Role create (Role role){
+        
         // if (roleRepository.findByName(role.getName()).equals(role)) {
         //     throw new ResponseStatusException(HttpStatus.CONFLICT, "Role already exists!!!");        
         // }

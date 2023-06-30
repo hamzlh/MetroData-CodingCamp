@@ -1,10 +1,14 @@
 package id.co.mii.serverapp.Model.DTORequest;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+// import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+import lombok.Setter;
+import lombok.Getter;
+
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class RoleRequest {
