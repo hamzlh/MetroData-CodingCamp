@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <style>
+        .button {
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 8px;
+            margin: 4px 4px;
+            transition-duration: 0.4s;
+            cursor: pointer
+        }
+
+        .button1 {
+            background-color: white;
+            color: black;
+            border: 2px solid #000000;
+        }
+
+        .button1:hover {
+            background-color: grey;
+            color: white;
+        }
+
+        .button2 {
+            background-color: white;
+            color: black;
+            border: 2px solid #000000;
+        }
+
+        .button2:hover {
+            background-color: grey;
+            color: white;
+        }
+
+        .button3 {
+            background-color: white;
+            color: black;
+            border: 2px solid #000000;
+        }
+
+        .button3:hover {
+            background-color: grey;
+            color: white;
+        }
+
+        .button4 {
+            background-color: white;
+            color: black;
+            border: 2px solid #000000;
+        }
+
+        .button4:hover {
+            background-color: grey;
+            color: white;
+        }
+    </style>
+</head>
+
+
+<body>
+    <table align='center' border='1' cellpadding='50' cellspacing='10' width='1000'>
+        <tr>
+            <td bgcolor='#ffffff'>
+                <p>Hello, <b><span th:text="${name}">nama</span></b></p><br>
+                <p style='background-color:#120042'> . </p>
+                <p style='font-family: Poppins'>
+                    <center><b>ABOUT ME</b></center>
+                </p>
+                <center><img
+                        src='https://lh3.googleusercontent.com/u/0/drive-viewer/AFGJ81obcZNMnl_pDk-OdvKo1MFffhJhByogdpv-nq7NvNhr_IrRJRYazWPPTCKfaRxequ5GBcFnLHmqem4oREuUVqwtZsj1LQ=w811-h617'
+                        alt='fotohamzah' width=80% height=80%></center>
+                <p style='background-color:#120042'> . </p>
+                <p style='font-family: Poppins;'>My name is <b><span
+                            th:text="${myname}"></span></b>, a Fresh Graduate Bachelor of Mathematics from the Sepuluh
+                    Nopember Institute of Technology, focused
+                    on Computer Science. Have an interest in data and seek new opportunities as a Data Scientist.
+                    Experienced in projects on Machine Learning by compiling and implementing a model, can analyze and
+                    visualize data using Python and SQL. Have the ability to work with a team and good communication
+                    skills. Very passionate about learning new things, especially in the field of Technology.</p>
+                <p style='background-color:#120042'> . </p>
+                <b>Portofolio</b><br>
+                <button class='button button3' ; style="background-color: #120042 ; color: white;"><a
+                        style='text-decoration:none;' href='https://github.com/hamzlh'>GitHub</a></button>
+                <p style='background-color:#120042'> . </p>
+                <p>Want to know me more?</p>
+                <br><b>Contact me</b>
+                <br>
+                <button class=" button button1" style="background-color: #120042; color: white;">
+                    <a style="text-decoration: none; color: white;"
+                        href="https://www.linkedin.com/in/hamzahhh/">LinkedIn</a>
+                </button><br>
+
+                <button class="button button2" style="background-color: #120042; color: white;">
+                    <a style="text-decoration: none; color: white;"
+                        href="https://www.instagram.com/hamzlh_/">Instagram</a>
+                </button><br>
+
+                <button class="button button2" style="background-color: #120042; color: white;">
+                    <a style="text-decoration: none; color: white;" href="https://wa.me/6289622442799">Whatsapp</a>
+                </button><br>
+                <p style='background-color:#120042'> . </p>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
