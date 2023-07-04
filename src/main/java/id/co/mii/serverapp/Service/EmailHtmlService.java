@@ -22,11 +22,9 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import id.co.mii.serverapp.Model.DTORequest.EmailRequest;
 // import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class EmailHtmlService {
 
     private final JavaMailSender javaMailSender;
